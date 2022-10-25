@@ -24,6 +24,7 @@ function MemberDetails() {
         //setMemberDetails({vaccination: [1,2,3]})
         console.log("data",data)
         console.log("member",MemberDetails)
+        console.log ("vac",MemberDetails.vaccination)
        
     }
     // const getCorona = async () => {
@@ -57,29 +58,35 @@ function MemberDetails() {
 
     }
     
-
+// var date = MemberDetails.map((item, index) => <span style={{color: "red"}}>{item.date}</span>)
 
 
     return <div>
         <h3> {MemberDetails && MemberDetails.name}</h3>
-
+      
         Name: {MemberDetails.name} <br />
         ID:{MemberDetails.ID} <br />
         Address:<br />
-        {/* city:<span>{MemberDetails.address.city}</span>
-        street:<span>{MemberDetails.address.street}</span>
-        houseNum:<span>{MemberDetails.address.houseNum}</span> */}
+        city:<span>{MemberDetails.city6}</span><br />
+        street:<span>{MemberDetails.street}</span><br />
+        houseNum:<span>{MemberDetails.houseNum}</span><br />
+        <br />
         bornDate:<span>{MemberDetails.bornDate} </span><br />
         phone:<span>{MemberDetails.phone}</span> <br />
         mobilePhone:<span>{MemberDetails.mobilePhone}</span> <br />
          vaccination:<br />
-        {MemberDetails.vaccination && MemberDetails.vaccination.map((x, index) => {
-                        return({
-                       date: <span key={index}>{x.date}</span>
-                        // <span key={index}>{x.maker}</span>
-                    })
-                    
-        })}
+         {<table border={"1"}>
+        <tbody>
+                        <tr><th>חיסון מספר</th><th>מועד קבלת החיסון</th><th>יצרן</th></tr>
+                        {MemberDetails.vaccination && MemberDetails.vaccination.map((vac, index) => {
+                            return (<tr key={index}>
+                                <td>{index + 1}</td><td>{vac.date.slice(0, 10)}</td><td>{vac.maker}</td>
+                            </tr>)
+                        })}
+                    </tbody>
+                </table>
+            }
+       
         
         
         positiveDate:<span>{MemberDetails.positiveDate}</span><br />

@@ -8,9 +8,8 @@ function Members(){
        },[])
         const allMembers=async()=>{
             try{
-         let maxs=await axios.get("http://localhost:8000/members")
-         let caxs=await axios.get("http://localhost:8000/corona")
-            navigate("./allMembers",{state:maxs.data},{state:caxs.data})
+         let axs=await axios.get("http://localhost:8000/members")
+            navigate("./allMembers",{state:axs.data})
             
       }catch(err)
     {
