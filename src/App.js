@@ -1,28 +1,27 @@
-import logo from './logo.svg';
+import React ,{useState, useEffect} from 'react';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import AllMembersComp from './AllMembers';
-import Members from './Members';
-import{BrowserRouter,Routes,Route}from "react-router-dom"
-import AddMemberComp from './AddMember';
-import MemberDetails from './MemberDetails';
-import EditMember from './EditMember';
- 
+import Home from "./pages/Home";
+import AddEdit from "./pages/AddEdit";
+import View from './pages/View';
+
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Members />} >
-      <Route path="/allMembers" element={<AllMembersComp />} />
-       <Route path="/addMember" element={<AddMemberComp/>} />
-       <Route path="/member/:id" element={<MemberDetails />} />
-       <Route path="/editMember/:id" element={<EditMember />} />
+    <BrowserRouter>
+      <div className="App">
+        <ToastContainer position='top-center'/>
+        
+         <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/addPatient' element={<AddEdit/>} />
+          <Route path='/update/:id' element={<AddEdit/>} />
+          <Route path='/view/:id' element={<View/>} />
 
-      </Route>
-
-      </Routes>
+        </Routes> 
+      </div>  
     </BrowserRouter>
-    </div>
   );
 }
 
